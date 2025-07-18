@@ -1,6 +1,8 @@
 import { useState } from "react";
+import BlogList from "./BlogList";
 
 const Home = () => {
+
     const [name, setName] = useState('Diogo'); // initial state
     const [num, setNum] =useState(20);
 
@@ -24,17 +26,13 @@ const Home = () => {
 
   return (  
     <div className="home">
-        <h2>Homepage</h2>
+        <BlogList blogs= {blogs} title = "CHAMP20NS"/>
+        {/* <h2>Homepage</h2>
         {<p>{name} is forever {num}</p> }
-        <button onClick={handleClick}>Click Here</button>
+        <button onClick={handleClick}>Click Here</button> */}
         {/* <button onClick={(e) => handleClickAgain('Wizard', e)}>Click Here Again</button>  */}
 
-        {blogs.map((blog) => (
-            <div className="blog-preview" key={blog.id}>
-                <h2>{blog.title}</h2>
-                <p>Written by {blog.author}</p>
-            </div>
-        ))}
+      
     </div>
     );
 }   
