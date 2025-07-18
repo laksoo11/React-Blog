@@ -14,6 +14,12 @@ const Home = () => {
 
     ]);
 
+    const [changedstate, setChangedState] = useState('initialstate');
+
+    const handleState= () => {
+        setChangedState('newState');
+
+    }
 
    
     const handleClick = () => {
@@ -27,10 +33,22 @@ const Home = () => {
   return (  
     <div className="home">
         <BlogList blogs= {blogs} title = "CHAMP20NS"/>
+        {/* <p>{changedstate}</p> */}
+
+        <BlogList blogs= {blogs.filter((blog) => 
+            blog.author === 'Frank'
+        )} title = "CHAMPEONS"/>
+        
+
+
+
+
         {/* <h2>Homepage</h2>
         {<p>{name} is forever {num}</p> }
         <button onClick={handleClick}>Click Here</button> */}
         {/* <button onClick={(e) => handleClickAgain('Wizard', e)}>Click Here Again</button>  */}
+
+        {/* <button onClick={handleState}>Button</button> */}
 
       
     </div>
@@ -39,3 +57,6 @@ const Home = () => {
  
  
 export default Home;
+
+
+
