@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -22,6 +22,8 @@ const Home = () => {
 
     }
 
+
+
     const [changedstate, setChangedState] = useState('initialstate');
 
     const handleState= () => {
@@ -36,6 +38,14 @@ const Home = () => {
         setNum(2020);
         
     }
+
+    useEffect(() => {
+        console.log('use effect running');
+        console.log(blogs);
+
+    });
+
+
 
 
   return (  
