@@ -14,6 +14,14 @@ const Home = () => {
 
     ]);
 
+
+    const handelDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id)
+        setBlogs(newBlogs);
+
+
+    }
+
     const [changedstate, setChangedState] = useState('initialstate');
 
     const handleState= () => {
@@ -32,7 +40,7 @@ const Home = () => {
 
   return (  
     <div className="home">
-        <BlogList blogs= {blogs} title = "CHAMP20NS"/>
+        <BlogList blogs= {blogs} title = "CHAMP20NS" handelDelete={handelDelete}/>
         {/* <p>{changedstate}</p> */}
 
         <BlogList blogs= {blogs.filter((blog) => 
