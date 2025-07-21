@@ -3,8 +3,8 @@ import BlogList from "./BlogList";
 
 const Home = () => {
 
-    const [name, setName] = useState('Diogo'); // initial state
-    const [num, setNum] =useState(20);
+    // const [name, setName] = useState('Diogo'); // initial state
+    // const [num, setNum] =useState(20);
 
     const [blogs, setBlogs] = useState([
         {title: 'My new game', body: 'GPA 5', author: 'PopStars', id:'1'},
@@ -13,6 +13,8 @@ const Home = () => {
 
 
     ]);
+
+    const [name, setName] = useState('DIGGY');
 
 
     const handelDelete = (id) => {
@@ -32,18 +34,18 @@ const Home = () => {
     }
 
    
-    const handleClick = () => {
+    // const handleClick = () => {
 
-        setName('Jota'); 
-        setNum(2020);
+    //     setName('Jota'); 
+    //     setNum(2020);
         
-    }
+    // }
 
     useEffect(() => {
         console.log('use effect running');
-        console.log(blogs);
+        console.log(name);
 
-    });
+    }, [name]);
 
 
 
@@ -52,6 +54,10 @@ const Home = () => {
     <div className="home">
         <BlogList blogs= {blogs} title = "CHAMP20NS" handelDelete={handelDelete}/>
         {/* <p>{changedstate}</p> */}
+
+        <button onClick={() => setName('Frosty')}>change name</button>
+
+        <p> {name} </p>
 
         <BlogList blogs= {blogs.filter((blog) => 
             blog.author === 'Frank'
