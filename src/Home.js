@@ -6,23 +6,12 @@ const Home = () => {
     // const [name, setName] = useState('Diogo'); // initial state
     // const [num, setNum] =useState(20);
 
-    const [blogs, setBlogs] = useState([
-        {title: 'My new game', body: 'GPA 5', author: 'PopStars', id:'1'},
-        {title: 'Celebrations', body: 'Party all night', author: 'Frank', id:'2'},
-        {title: 'Top 10 skins 2025', body: 'Best skins to get now', author: 'COC', id:'3'}
-
-
-    ]);
+    const [blogs, setBlogs] = useState(null);
 
     const [name, setName] = useState('DIGGY');
 
 
-    const handelDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id)
-        setBlogs(newBlogs);
-
-
-    }
+   
 
 
 
@@ -42,26 +31,33 @@ const Home = () => {
     // }
 
     useEffect(() => {
-        console.log('use effect running');
-        console.log(name);
+        fetch('http://localhost:8000/blogs')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setBlogs(data)
 
-    }, [name]);
+
+            });
+
+    }, []);
 
 
 
 
   return (  
     <div className="home">
-        <BlogList blogs= {blogs} title = "CHAMP20NS" handelDelete={handelDelete}/>
+        {blogs && <BlogList blogs= {blogs} title = "CHAMP20NS"/>}
         {/* <p>{changedstate}</p> */}
 
-        <button onClick={() => setName('Frosty')}>change name</button>
+        {/* <button onClick={() => setName('Frosty')}>change name</button>
 
         <p> {name} </p>
 
         <BlogList blogs= {blogs.filter((blog) => 
             blog.author === 'Frank'
-        )} title = "CHAMPEONS"/>
+        )} title = "CHAMPEONS"/> */}
         
 
 
