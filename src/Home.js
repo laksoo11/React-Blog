@@ -10,6 +10,8 @@ const Home = () => {
 
     const [name, setName] = useState('DIGGY');
 
+    const [isPending, setIsPending] = useState(true);
+
 
    
 
@@ -31,15 +33,21 @@ const Home = () => {
     // }
 
     useEffect(() => {
-        fetch('http://localhost:8000/blogs')
+      setTimeout(() => {
+          fetch('http://localhost:8000/blogs')
             .then(res => {
                 return res.json();
             })
             .then(data => {
-                setBlogs(data)
+                setBlogs(data);
+                setIsPending(false);
 
 
             });
+
+      },500);
+
+      
 
     }, []);
 
@@ -48,6 +56,7 @@ const Home = () => {
 
   return (  
     <div className="home">
+        { isPending && <div>Loading ....</div>}
         {blogs && <BlogList blogs= {blogs} title = "CHAMP20NS"/>}
         {/* <p>{changedstate}</p> */}
 
@@ -63,12 +72,7 @@ const Home = () => {
 
 
 
-        {/* <h2>Homepage</h2>
-        {<p>{name} is forever {num}</p> }
-        <button onClick={handleClick}>Click Here</button> */}
-        {/* <button onClick={(e) => handleClickAgain('Wizard', e)}>Click Here Again</button>  */}
-
-        {/* <button onClick={handleState}>Button</button> */}
+     
 
       
     </div>
